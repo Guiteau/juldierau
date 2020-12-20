@@ -1,4 +1,4 @@
-package juldierau;
+package juldierau.characters;
 
 public class Bart extends Character {
 

@@ -1,4 +1,6 @@
-package juldierau;
+package juldierau.characters;
+
+import juldierau.utils.Die;
 
 public abstract class Character {
 	private int energy;
@@ -18,12 +20,12 @@ public abstract class Character {
 	
 	public Character()
 	{
-		
+		initialSpeed();
 	}
 	
-	private void changeSpeed()
+	private void initialSpeed()
 	{
-		switch((int)Math.random() * 3 + 1)
+		switch(Die.getDiscretValue(1, 3))
 		{
 		case 1:
 			speed = Speed.SLOW;
@@ -39,12 +41,30 @@ public abstract class Character {
 	
 	protected void move()
 	{
+		int steps = 0;
 		switch(speed)
 		{
 			case SLOW:
-				if ((int)Math.random() * 2 == 0)
-					
+				steps = 1;
 				break;
+			case MEDIUM:
+				steps = 2;
+				break;
+			case FAST:
+				steps = 3;
+				break;
+		}
+		
+		while (steps != 0)
+		{
+			int mod = Die.getDiscretValue(0, 1) == 0 ? -1 : 1;
+			
+			if (Die.getDiscretValue(0, 1) == 0)
+				x += mod;
+			else
+				y += mod;
+			
+			steps--;
 		}
 	}
 	

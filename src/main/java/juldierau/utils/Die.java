@@ -1,4 +1,4 @@
-package juldierau;
+package juldierau.utils;
 
 public class Die {
 	
